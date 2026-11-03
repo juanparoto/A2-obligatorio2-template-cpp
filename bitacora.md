@@ -40,6 +40,9 @@ echo "Resultado: $aprobadas aprobadas, $fallidas fallidas."
 )
 ```
 
+## 2026-11-02 - Nicolás Varela
+-Diseñe una solución para el 7 que estoy seguro que funciona pero me quedo de orden O(n²), asi que falta mejorar el orden
+
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 6.
