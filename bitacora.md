@@ -41,7 +41,10 @@ echo "Resultado: $aprobadas aprobadas, $fallidas fallidas."
 ```
 
 ## 2026-11-02 - Nicolás Varela
--Diseñe una solución para el 7 que estoy seguro que funciona pero me quedo de orden O(n²), asi que falta mejorar el orden
+- Diseñe una solución para el 7 que estoy seguro que funciona pero me quedo de orden O(n²), asi que falta mejorar el orden
+
+## 2026-11-03 - Nicolás Varela
+- Use el merge sort que dimos en la clase del miercoles 28/11 y quedo terminado el ej 7 con orden O(N log N)
 
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
