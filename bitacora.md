@@ -41,10 +41,10 @@ echo "Resultado: $aprobadas aprobadas, $fallidas fallidas."
 ```
 
 ## 2026-11-02 - Nicolás Varela
-- Diseñe una solución para el 7 que estoy seguro que funciona pero me quedo de orden O(n²), asi que falta mejorar el orden
+- Diseñe una solución para el 7 usando divide and conquer pero me quedo de orden O(n²) porque a la hora de comparar cruzado comparaba todos los de una mitad con todos de la otra, asi que aunque funcione mi solución falta mejorar el orden
 
 ## 2026-11-03 - Nicolás Varela
-- Use el merge sort que dimos en la clase del miercoles 28/11 y quedo terminado el ej 7 con orden O(N log N)
+- Retome el 7 y use el merge sort que dimos en la clase del miercoles 28/10, entonces la idea es que sigo con divide and conquer y cuando se cuenten recursivamente las mitades, se ordenan y a la hora de comparar cruzado, no tengo que comparar dorsales de más. Falta correr las pruebas
 
 ## 2026-11-04 - Juan Pablo Burone 
 - Revise con una medialuna lo que hizo mi compañero, fallaba las pruebas pero porque le faltaba el salto de linea, entonces agregué el "/n" al final del cout y pasaron todas. Además de eso librere memoria en cada llamada recursiva para que el orden espacial no quedara O(N log N), si no que quedara O(N) como pedia la letra.
