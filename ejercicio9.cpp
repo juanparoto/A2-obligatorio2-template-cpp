@@ -38,7 +38,7 @@ int cuantosLikesPuedoAcumular(int ronda, bool baile, int ventaja, int* anotaA, i
         }
 
         int acumulados = likesAnteriores + likesDeEstaRonda;
-        
+
         if (acumulados > mejor) {
             mejor = acumulados;
         }
@@ -71,5 +71,7 @@ int main()
 
     int res = cuantosLikesPuedoAcumular(rondas-1, yaBaile, ventaja, anotaA, likes);
 
+    cout >> res;
+    
     return 0;
 }
