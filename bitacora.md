@@ -82,6 +82,14 @@ test "$fallidas" -eq 0
 )
 ```
 
+## 2026-11-12 - Juan Pablo Burone (Primera hora 17:00 - 18:00)
+- Lei la letra del ejercicio 9 de memoización, intente identificar cual era la función recursiva que me solucionaba el problema, denomine a f(n) cómo "el máximo de likes que podes sumar hasta la ronda n". Me di cuenta que lo que tenia que evaluar era si bailar afectaba al mejor conteo de likes, entonces habia seguro que evaluar dos casos, uno donde cuento los likes que puedo ganar si baile en la anterior, y otro donde cuentos los likes si no bailé. A su vez tenia que asegurarme que la ventaja nunca fuera negativa. 
+
+- Seguí pensando cómo definir f(n). Saber hasta qué ronda llegué me dejaba con dos preguntas abiertas: con qué ventaja terminó esa ronda y si el Pato bailó en ella. La ventaja me sirve para saber si el marcador era posible. El dato del baile me sirve para decidir si un baile en la ronda siguiente vale entero o la mitad. Por eso agregué esos dos datos como parámetros de la función.
+
+## 2026-11-12 - Juan Pablo Burone (Segunda casi hora 18:00 - 18:40)
+- Hice la función recursiva, primero verificó si la ventaja es un dato válido o no. En el caso base cuando llego a la ronda 0, me tnego que fijar que, si la opcion de likes es una opción válida, entonces el partido arranca con ventaja 0. Si el Pato baila, devuelvo los likes de esa ronda, si ataja devuelvo 0. Para las demás rondas utilizo un for que prueba cual camino trae mas likes, si bailar en el anterior o si solo atajar. Descarto las ramas que devuelven -1, sumo los likes de la ronda actual a cada opción válida y me quedo con el mayor total.
+
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 6.
