@@ -93,6 +93,9 @@ test "$fallidas" -eq 0
 ## 2026-11-12 - Juan Pablo Burone
 - Ok, me di cuenta que resolvi el problema de forma recursiva, pero no apliqué memoizacion, osea ahora tengo que buscar la forma de guardar los mejores resultados.
 
+# 2026-11-13 - Juan Pablo Burone
+- Cree una matriz de 3 dimensiones para poder aplicar la memoización e ir pudiendo guardar los resultados, ahora el problema si esta resuelto. Ademas de eso le pedi el script a Codex para las pruebas, y las pasó todas. 
+
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 6.
