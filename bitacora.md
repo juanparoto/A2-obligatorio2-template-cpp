@@ -90,6 +90,9 @@ test "$fallidas" -eq 0
 ## 2026-11-12 - Juan Pablo Burone (Segunda casi hora 18:00 - 18:40)
 - Hice la función recursiva, primero verificó si la ventaja es un dato válido o no. En el caso base cuando llego a la ronda 0, me tnego que fijar que, si la opcion de likes es una opción válida, entonces el partido arranca con ventaja 0. Si el Pato baila, devuelvo los likes de esa ronda, si ataja devuelvo 0. Para las demás rondas utilizo un for que prueba cual camino trae mas likes, si bailar en el anterior o si solo atajar. Descarto las ramas que devuelven -1, sumo los likes de la ronda actual a cada opción válida y me quedo con el mayor total.
 
+## 2026-11-12 - Juan Pablo Burone
+- Ok, me di cuenta que resolvi el problema de forma recursiva, pero no apliqué memoizacion, osea ahora tengo que buscar la forma de guardar los mejores resultados.
+
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 6.
