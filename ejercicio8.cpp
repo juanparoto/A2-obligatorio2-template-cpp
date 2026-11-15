@@ -89,4 +89,25 @@ int main()
 
     }
     cout << mochila(n, w, pesos, satifacciones, categorias, li, tablero) << endl;
+
+    for (int i = 0; i <= n; i++){
+        for (int j = 0; j <= w; j++){
+            for (int k = 0; k <= li[0]; k++){
+                for (int l = 0; l <= li[1]; l++){
+                    for (int m = 0; m <= li[2]; m++){
+                        delete[] tablero[i][j][k][l][m];
+                    }
+                    delete[] tablero[i][j][k][l];
+                }
+                delete[] tablero[i][j][k];
+            }
+            delete[] tablero[i][j];
+        }
+        delete[] tablero[i];
+    }
+    delete[] tablero;
+    delete[] pesos;
+    delete[] satifacciones;
+    delete[] categorias;
+    delete[] li;
 }

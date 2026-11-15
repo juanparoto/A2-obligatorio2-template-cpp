@@ -94,10 +94,76 @@ test "$fallidas" -eq 0
 - Ok, me di cuenta que resolvi el problema de forma recursiva, pero no apliqué memoizacion, osea ahora tengo que buscar la forma de guardar los mejores resultados.
 
 # 2026-11-13 - Juan Pablo Burone
-- Cree una matriz de 3 dimensiones para poder aplicar la memoización e ir pudiendo guardar los resultados, ahora el problema si esta resuelto. Ademas de eso le pedi el script a Codex para las pruebas, y las pasó todas. 
+- Cree una matriz de 3 dimensiones para poder aplicar la memoización e ir pudiendo guardar los resultados, ahora el problema si esta resuelto. Ademas de eso le pedi el script a Codex para las pruebas, y las pasó todas. Adjunto el script:
+```bash
+(
+cd ~/Alg2/A2-obligatorio2-template-cpp || exit 1
+
+temporal="$(mktemp -d)" || exit 1
+trap 'rm -f -- "$temporal/programa" "$temporal/salida.txt"; rmdir -- "$temporal"' EXIT
+
+g++ -std=c++11 -O2 -Wall -Wextra ejercicio9.cpp -o "$temporal/programa" || exit 1
+
+aprobadas=0
+fallidas=0
+
+for entrada in test/ejercicio9/*.in.txt; do
+    esperada="${entrada%.in.txt}.out.txt"
+    nombre="${entrada##*/}"
+
+    if timeout 10s "$temporal/programa" < "$entrada" > "$temporal/salida.txt" &&
+       diff -u "$esperada" "$temporal/salida.txt"; then
+        echo "OK: ${nombre%.in.txt}"
+        aprobadas=$((aprobadas + 1))
+    else
+        echo "FALLÓ: ${nombre%.in.txt}"
+        fallidas=$((fallidas + 1))
+    fi
+done
+
+echo
+echo "Resultado: $aprobadas aprobadas, $fallidas fallidas."
+test "$fallidas" -eq 0
+)
+```
 
 # 2026-11-15 - Nicolás Varela
 - Diseñe una solución para el 8, tomando como referencia lo que vimos en la clase del viernes 13/11, que seria hacer una mochila 0/1 pero de 6 dimensiones, donde cada dimension es, la cantidad de productos considerados, la capacidad de la mochila y la cantidad de productos comprados por cada categoria. Inicialize todo el tablero en 0 pero a diferencia de lo que vimos en clase, en este ejercicio, hay casos impsibles (como que considero 0 productos pero digo que compro 1 vegetal), entonces inicialize esos casos en -1. Otra cosa que se diferencia de lo que dimos en clase es que como algunas dimensiones representan cantidades exactas, tuve que buscar un maximo y no devolver "el valor de abajo a la derecha". Falta correr las pruebas pero mi solución tiene sentido.
+
+# 2026-11-15 - Juan Pablo Burone
+- No hice nada de código, solo agregure los delete para mantener buenas prácticas, solo me fije que lo que hizo Nico compilara y pasara todos los test, efectivamente compiló y los pasó todos, adjunto el script de bash brindado por Codex:
+
+```bash
+(
+cd ~/Alg2/A2-obligatorio2-template-cpp || exit 1
+
+temporal="$(mktemp -d)" || exit 1
+trap 'rm -f -- "$temporal/programa" "$temporal/salida.txt"; rmdir -- "$temporal"' EXIT
+
+g++ -std=c++11 -O2 -Wall -Wextra ejercicio8.cpp -o "$temporal/programa" || exit 1
+
+aprobadas=0
+fallidas=0
+
+for entrada in test/ejercicio8/*.in.txt; do
+    esperada="${entrada%.in.txt}.out.txt"
+    nombre="${entrada##*/}"
+
+    if timeout 10s "$temporal/programa" < "$entrada" > "$temporal/salida.txt" &&
+       diff -u "$esperada" "$temporal/salida.txt"; then
+        echo "OK: ${nombre%.in.txt}"
+        aprobadas=$((aprobadas + 1))
+    else
+        echo "FALLÓ: ${nombre%.in.txt}"
+        fallidas=$((fallidas + 1))
+    fi
+done
+
+echo
+echo "Resultado: $aprobadas aprobadas, $fallidas fallidas."
+test "$fallidas" -eq 0
+)
+```
 
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
