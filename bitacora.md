@@ -96,6 +96,9 @@ test "$fallidas" -eq 0
 # 2026-11-13 - Juan Pablo Burone
 - Cree una matriz de 3 dimensiones para poder aplicar la memoización e ir pudiendo guardar los resultados, ahora el problema si esta resuelto. Ademas de eso le pedi el script a Codex para las pruebas, y las pasó todas. 
 
+# 2026-11-15 - Nicolás Varela
+- Diseñe una solución para el 8, tomando como referencia lo que vimos en la clase del viernes 13/11, que seria hacer una mochila 0/1 pero de 6 dimensiones, donde cada dimension es, la cantidad de productos considerados, la capacidad de la mochila y la cantidad de productos comprados por cada categoria. Inicialize todo el tablero en 0 pero a diferencia de lo que vimos en clase, en este ejercicio, hay casos impsibles (como que considero 0 productos pero digo que compro 1 vegetal), entonces inicialize esos casos en -1. Otra cosa que se diferencia de lo que dimos en clase es que como algunas dimensiones representan cantidades exactas, tuve que buscar un maximo y no devolver "el valor de abajo a la derecha". Falta correr las pruebas pero mi solución tiene sentido.
+
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 6.
