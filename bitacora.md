@@ -165,6 +165,9 @@ test "$fallidas" -eq 0
 )
 ```
 
+## 2026-11-21 - Juan Pablo Burone
+- Escribí las autorias y la justificacion de todos los ejercicios hechos hasta el momento.
+
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 6.
