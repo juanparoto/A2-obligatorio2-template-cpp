@@ -13,5 +13,5 @@
 - Implementación propia, primero lo pensamos de forma recursiva, luego aplicamos la memoización, en este caso no le encontramos parecido a ningún ejercicio resuelto en clase.
 
 ## Ejercicio 10
-- Implementación íntegramente propia, sin fuentes externas.
+- Implementación propia. Primero pensamos la solución siguiendo el template del powerpoint y tomando como referencia el ejercicio del caballo. Llegamos a una solución propia, pero las pruebas demoraban mucho. Entonces le pedimos una sugerencia a Codex y nos propuso recorrer solo las letras que aparecen en el problema, en vez de las 26 posibles, y agregar a la poda una verificación por columnas. Después implementamos esas ideas a nuestra manera.
 
