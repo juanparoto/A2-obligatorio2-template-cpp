@@ -168,6 +168,70 @@ test "$fallidas" -eq 0
 ## 2026-11-21 - Juan Pablo Burone
 - Escribí las autorias y la justificacion de todos los ejercicios hechos hasta el momento.
 
+## 2026-11-22 - Nicolás Varela
+- Hice una solución para el ejercicio 10 siguiendo el template del PowerPoint, pero agregué algunos if para no salirme de ciertos límites. Para solcionar los acertijos, uso un arreglo de strings y cada vez que asigno un número a una letra, busco esa letra en los strings y la reemplazo por el dígito. También recorro solo las letras que aparecen en el problema, en vez de recorrer las 26 letras posibles. Las proceso de izquierda a derecha, empezando por el resultado. La poda compara los números de izquierda a derecha que se van formando con mejorResultado, primero el resultado y después los sumandos. También revisa la suma columna por columna, de derecha a izquierda, teniendo en cuenta los acarreos. Después verifico si todas las letras están asignadas. Para asignar un número, compruebo que no se haya usado y que no genere un cero a la izquierda en una palabra de más de una cifra. Corri todos los test y pasaron todos. El tiempo total de las pruebas fue de aproximadamente 72 segundos siendo el test mas lento "muchos" que demoro aproximadamente 36 segundos, Adjunto el script que usé para correr los tests y medir el tiempo de cada uno:
+
+```bash
+bash <<'BASH'
+set -u
+ulimit -c 0 2>/dev/null || true
+
+if [[ ! -f ejercicio10.cpp || ! -d test/ejercicio10 ]]; then
+    echo "NO: ejecutá el bloque desde la raíz del proyecto"
+    exit 1
+fi
+
+tmp_dir="$(mktemp -d)"
+trap 'rm -rf -- "$tmp_dir"' EXIT
+
+if ! g++ -std=c++11 -O2 ejercicio10.cpp -o "$tmp_dir/ejercicio10"; then
+    echo "NO: error al compilar"
+    exit 1
+fi
+
+shopt -s nullglob
+correctas=0
+totales=0
+inicio_total="$(date +%s%N)"
+
+for entrada in test/ejercicio10/*.in.txt; do
+    esperado="${entrada%.in.txt}.out.txt"
+    nombre="$(basename "$entrada" .in.txt)"
+    obtenido="$tmp_dir/obtenido.txt"
+    totales=$((totales + 1))
+    inicio_test="$(date +%s%N)"
+
+    estado="NO"
+    if [[ -f "$esperado" ]] &&
+       ( "$tmp_dir/ejercicio10" < "$entrada" > "$obtenido" ) 2>"$tmp_dir/error.txt" &&
+       diff -q <(tr -d '\r' < "$esperado") <(tr -d '\r' < "$obtenido") >/dev/null; then
+        estado="OK"
+        correctas=$((correctas + 1))
+    fi
+
+    fin_test="$(date +%s%N)"
+    duracion_ms=$(( (fin_test - inicio_test) / 1000000 ))
+    printf '[%s] %-24s %d.%03d s\n' \
+        "$estado" "$nombre" "$((duracion_ms / 1000))" "$((duracion_ms % 1000))"
+done
+
+fin_total="$(date +%s%N)"
+duracion_total_ms=$(( (fin_total - inicio_total) / 1000000 ))
+
+if (( totales == 0 )); then
+    echo "NO: no se encontraron pruebas"
+elif (( correctas == totales )); then
+    echo "OK: $correctas/$totales correctas"
+else
+    echo "NO: $correctas/$totales correctas"
+fi
+
+printf 'Tiempo total de las pruebas (sin compilación): %d.%03d s\n' \
+    "$((duracion_total_ms / 1000))" "$((duracion_total_ms % 1000))"
+BASH
+```
+
 ## AAAA-MM-DD — En conjunto
 - Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
 - Pasan los casos de prueba 1 a 4 del ejercicio 6.
+
