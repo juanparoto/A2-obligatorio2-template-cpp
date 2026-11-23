@@ -231,7 +231,6 @@ printf 'Tiempo total de las pruebas (sin compilación): %d.%03d s\n' \
 BASH
 ```
 
-## AAAA-MM-DD — En conjunto
-- Ejemplo: Implementamos ... Bug: ... Lo corregimos ...
-- Pasan los casos de prueba 1 a 4 del ejercicio 6.
+## 2026-11-22 - Juan Pablo Burone
+- Revise lo pusheado por mi compañero, me pareció coherente la solución, hice una revisada general a todo el obligatorio. Terminé las justificaciones, es la versión final para entregar.
 

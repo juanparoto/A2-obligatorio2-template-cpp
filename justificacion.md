@@ -6,6 +6,8 @@
 
 - Leer las N placas cuesta O(N) y recorrer los 1001 valores positivos cuesta O(1001), que equivale a órden constante. El bucle del armado es una iteración por par, como mucho se recorren N/2 lugares, y la impresión recorre a lo sumo N posiciones. Por lo tanto el riempo de ejecución es max{O(N), O(1001), O(N/2)} que es O(N).
 
+- Los arreglos cantidadApariciones y pares tienen 1001 posiciones cada uno, así que ocupan espacio constante. El arreglo retorno guarda una posición por cada placa del cartel. En el peor caso usamos las N placas de la entrada, por lo que el espacio total es O(N).
+
 ## Ejercicio 7
 
 - Utilizamos dividir y conquistar, DAC. Para la explicación tomemos "N" como la cnatidad total de corredores y "m" la cantidad de corredores en el tramo que procesa una llamada recursiva. Si el tramo tiene un solo corredor, hay cero remontadas. Si tiene más lo dividimos en dos mitades y resolvemos cada una por separado. Cada llamada devuelve la cantidad de remontadas de su tramo y deja sus dorsales ordenados de menor a mayor
@@ -46,5 +48,11 @@ Al final buscamos el máximo entre las combinaciones de cantidades permitidas pa
 - Inicializamos la tabla y calculamos cada estado a lo sumo una vez. Cada estado requiere como máximo dos consultas y una cantidad constante de operaciones, así que el tiempo total es O(K²). La tabla ocupa O(K²) y la pila recursiva ocupa O(K) porque cada llamada retrocede una ronda. Por lo tanto, el espacio total es O(K²).
 
 ## Ejercicio 10
-- Sin restricciones de órdenes. / Justificación: ...
 
+- Para este ejercicio usamos backtracking, ordenamos las letras según su primera aparición, recorriendo el primer resultado y después los sumandos. En cada nivel probamos un dígito libre para la siguiente letra y reemplazamos todas sus apariciones. Al volver de la llamada recursiva, deshacemos el cambio para poder probar otro dígito.
+
+- Para podar, revisamos la suma desde las unidades mientras sea posible calcular el acarreo. Si una cifra ya asignada del resultado contradice la cuenta de su columna, descartamos la rama. También podamos cuando el prefijo ya asignado supera al de la mejor solución, comparando primero el resultado y después los sumandos.
+
+- Sean D la cantidad de letras distintas, K la cantidad de sumandos y L el largo de la palabra más larga. En el primer nivel hay hasta 10 opciones, en el segundo hasta 9 y así sucesivamente. Contando las asignaciones parciales de todos los niveles, hay como máximo O(10! / (10 − D)!) nodos. En cada nodo probamos hasta 10 dígitos y recorremos como máximo K + 1 palabras de largo L para revisar las podas, aplicar y deshacer movimientos o comparar soluciones. Como 10 es constante, el trabajo por nodo es O(K·L). Por lo tanto, el tiempo por acertijo es O(K·L·10! / (10 − D)!). Para T acertijos de hasta 10 letras distintas, la cota total es O(T·K·L·10!), tomando K y L como los máximos de la entrada.
+
+- Las palabras ocupan O(K·L) y usamos los mismos arreglos durante toda la búsqueda. La pila ocupa O(D) porque cada llamada asigna una letra más. Por eso, el espacio por acertijo es O(K·L + D).
