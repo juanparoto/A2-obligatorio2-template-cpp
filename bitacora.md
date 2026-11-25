@@ -234,3 +234,5 @@ BASH
 ## 2026-11-22 - Juan Pablo Burone
 - Revise lo pusheado por mi compañero, me pareció coherente la solución, hice una revisada general a todo el obligatorio. Terminé las justificaciones, es la versión final para entregar.
 
+## 2026-11-22 - Juan Pablo Burone
+- Después de hablar hoy con Joaquín, busqué una forma de bajar el tiempo de ejecución de las últimas dos pruebas. Antes recorríamos primero el resultado y después los sumandos, de izquierda a derecha. Como la suma se comprueba desde las unidades, muchas veces ya habíamos asignado varias letras y todavía no podíamos verificar la primera columna. Entonces vimos que convenía asignar las letras por columnas, empezando por las unidades. Así, apenas una columna da mal, cortamos esa rama y nos ahorramos probar todas las combinaciones que faltaban. También movimos el chequeo de la suma para hacerlo antes de comparar con la mejor solución, porque esa comparación podía hacer que nos salteáramos la validación. Ahora las pruebas pasan bien.

@@ -55,36 +55,6 @@ bool puedoPodar(string *problema, int k, int indice, int cantLetras, long long *
     {
         return true;
     }
-    if (mejorResultado[0] != -1)
-    {
-        for (int i = 0; i <= k; i++)
-        {
-            int j = 0;
-            string mejor = to_string(mejorResultado[i]);
-            for (char letra : problema[i])
-            {
-                if (letra >= '0' && letra <= '9')
-                {
-                    if (letra > mejor[j])
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        if ((letra < mejor[j]))
-                        {
-                            return false;
-                        }
-                        j++;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-    }
     int columnas = problema[0].size();
     int acarreo = 0;
     bool columnasConocidas = true;
@@ -126,6 +96,36 @@ bool puedoPodar(string *problema, int k, int indice, int cantLetras, long long *
     if (columnasConocidas && acarreo != 0)
     {
         return true;
+    }
+    if (mejorResultado[0] != -1)
+    {
+        for (int i = 0; i <= k; i++)
+        {
+            int j = 0;
+            string mejor = to_string(mejorResultado[i]);
+            for (char letra : problema[i])
+            {
+                if (letra >= '0' && letra <= '9')
+                {
+                    if (letra > mejor[j])
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        if ((letra < mejor[j]))
+                        {
+                            return false;
+                        }
+                        j++;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
     return false;
 }
@@ -239,11 +239,18 @@ int main()
         cin >> problema[0];
         if (!(largoSumandos > problema[0].size()))
         {
-            for (int j = 0; j <= k; j++)
+            int columnas = static_cast<int>(problema[0].size());
+            for (int columna = 0; columna < columnas; columna++)
             {
-                for (char letra : problema[j])
+                for (int fila = 1; fila <= k + 1; fila++)
                 {
-                    int indice = letra - 'A';
+                    int j = fila <= k ? fila : 0;
+                    int pos = static_cast<int>(problema[j].size()) - 1 - columna;
+                    if (pos < 0)
+                    {
+                        continue;
+                    }
+                    int indice = problema[j][pos] - 'A';
                     if (!agregada[indice])
                     {
                         agregada[indice] = true;
